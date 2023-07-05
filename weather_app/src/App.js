@@ -6,7 +6,7 @@ function App() {
 
   //const dataUrl = "https://api.openweathermap.org/data/2.5/weather?lat=17.366&lon=78.476&appid=45c40bcf2a13be99db1db8739a23d433";
   //const locUrl = "http://api.openweathermap.org/geo/1.0/direct?q=Hyderabad&limit=5&appid=45c40bcf2a13be99db1db8739a23d433";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=45c40bcf2a13be99db1db8739a23d433`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=45c40bcf2a13be99db1db8739a23d433`;
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
@@ -33,26 +33,34 @@ function App() {
             <p>{data.name}</p>
           </div>
           <div className="temp">
-            {data.main ? <h1>{data.main.temp}K</h1> : null}
+            {/*we cant directly access data.main.temp so first load data.main*/}
+            {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
           </div>
           <div className="description">
             {data.weather ? <p>{data.weather[0].description}</p> : null}
           </div>
         </div>
-        <div className="bottom">
-          <div className="feels">
-            {data.main ? <p className="">{data.main.feels_like}°C</p> : null}
-            <p>feels like</p>
+        {/*to only show bottom when data.name is defined*/}
+        {data.name !== undefined && (
+          <div className="bottom">
+            <div className="feels">
+              {data.main ? (
+                <p className="">{data.main.feels_like.toFixed()}°C</p>
+              ) : null}
+              <p>feels like</p>
+            </div>
+            <div className="humidity">
+              {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
+              <p>Humidity</p>
+            </div>
+            <div className="wind">
+              {data.wind ? (
+                <p className="bold">{data.wind.speed.toFixed()} KMPH</p>
+              ) : null}
+              <p>Wind Speed</p>
+            </div>
           </div>
-          <div className="humidity">
-            {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
-            <p>Humidity</p>
-          </div>
-          <div className="wind">
-            {data.wind ? <p className="bold">{data.wind.speed} MPH</p> : null}
-            <p>Wind Speed</p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
