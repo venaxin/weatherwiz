@@ -4,9 +4,8 @@ function App() {
   const [location, setLocation] = useState("");
   const [data, setData] = useState({});
 
-  //const dataUrl = "https://api.openweathermap.org/data/2.5/weather?lat=17.366&lon=78.476&appid=45c40bcf2a13be99db1db8739a23d433";
-  //const locUrl = "http://api.openweathermap.org/geo/1.0/direct?q=Hyderabad&limit=5&appid=45c40bcf2a13be99db1db8739a23d433";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=45c40bcf2a13be99db1db8739a23d433`;
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
