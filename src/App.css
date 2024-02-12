@@ -2,3 +2,9 @@
   max-width: 1080px;
   margin: 20px auto;
 }
+.display {
+  display: flex;
+}
+.search {
+  width: 58.7%;
+}
