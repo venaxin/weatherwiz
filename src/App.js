@@ -42,7 +42,15 @@ function App() {
         </div>
       </div>
       {!(currentWeather && forecast) && (
-        <div className="Logo">WeatherWiz</div>
+        <main>
+  <header>
+    <h1>
+      WeatherWiz
+      <div class="bg-gradient"></div>
+      <div class="bg-gradient two"></div>
+    </h1>
+  </header>
+</main>
       )}
     </>
   );

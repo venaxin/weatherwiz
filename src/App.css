@@ -10,19 +10,82 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
+  position: absolute;
+  right: 29%;
 }
 
-.Logo {
+.logo {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 2.5rem;
-  color: #333; /* Choose your desired color */
+  font-size: 5rem;
+  color: #d5d4d4; /* Choose your desired color */
   text-align: center;
   width: 100%;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); */
+}
+
+main {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+header {
+  color: #fff;
+  font-size: clamp(5rem, 5vw, 2rem);
+}
+
+h1 {
+  padding-inline: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background-color: #4f39ff;
+  border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  filter: blur(1rem);
+  mix-blend-mode: darken;
+  animation: one 2s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.bg-gradient.two {
+  z-index: 3;
+  background-color: #0098ff;
+  right: 30%;
+  top: 10%;
+  left: auto;
+  animation: two 4s ease-in-out infinite alternate;
+  mix-blend-mode: multiply;
+}
+
+@keyframes one {
+  100% {
+    left: 20%;
+  }
+}
+
+@keyframes two {
+  100% {
+    right: 60%;
+    top: 30%;
+  }
 }
 
 .display {
