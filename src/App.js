@@ -29,17 +29,22 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  console.log(forecast);
+
   return (
-    <div className="container">
-      <div className="search">
-        <Search onSearchChange={handleOnSearchChange} />
+    <>
+      <div className="container">
+        <div className="search">
+          <Search onSearchChange={handleOnSearchChange} />
+        </div>
+        <div className="display">
+          {currentWeather && <CurrentWeather data={currentWeather} />}
+          {forecast && <Forecast data={forecast} />}
+        </div>
       </div>
-      <div className="display">
-        {currentWeather && <CurrentWeather data={currentWeather} />}
-        {forecast && <Forecast data={forecast} />}
-      </div>
-    </div>
+      {!(currentWeather && forecast) && (
+        <div className="Logo">WeatherWiz</div>
+      )}
+    </>
   );
 }
 

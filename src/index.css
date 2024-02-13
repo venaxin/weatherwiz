@@ -3,7 +3,11 @@ body {
   font-family: Nunito Sans, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #d5d4d4;
+  background: url("../public/icons/wallpaper.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 code {
