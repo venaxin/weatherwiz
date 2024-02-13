@@ -33,12 +33,11 @@ function App() {
   };
 
   useEffect(() => {
-    // After response is received, add a small delay before animating the container's height
     if (responseReceived) {
       setTimeout(() => {
         const container = document.querySelector(".container");
         container.style.height = `${container.scrollHeight}px`;
-      }, 100); // Adjust the delay as needed for smoother animation
+      }, 100);
     }
   }, [responseReceived]);
 
