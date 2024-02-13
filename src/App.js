@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Search from "./components/search/search";
 import CurrentWeather from "./components/current-weather/current-weather";
 import Forecast from "./components/forecast/forecast";
@@ -8,6 +8,7 @@ import "./App.css";
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
+  const [responseReceived, setResponseReceived] = useState(false);
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
@@ -22,13 +23,24 @@ function App() {
     Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (response) => {
         const weatherResponse = await response[0].json();
-        const forcastResponse = await response[1].json();
+        const forecastResponse = await response[1].json();
 
         setCurrentWeather({ city: searchData.label, ...weatherResponse });
-        setForecast({ city: searchData.label, ...forcastResponse });
+        setForecast({ city: searchData.label, ...forecastResponse });
+        setResponseReceived(true); // Update state after response arrives
       })
       .catch((err) => console.log(err));
   };
+
+  useEffect(() => {
+    // After response is received, add a small delay before animating the container's height
+    if (responseReceived) {
+      setTimeout(() => {
+        const container = document.querySelector(".container");
+        container.style.height = `${container.scrollHeight}px`;
+      }, 100); // Adjust the delay as needed for smoother animation
+    }
+  }, [responseReceived]);
 
   return (
     <>
@@ -43,14 +55,14 @@ function App() {
       </div>
       {!(currentWeather && forecast) && (
         <main>
-  <header>
-    <h1>
-      WeatherWiz
-      <div class="bg-gradient"></div>
-      <div class="bg-gradient two"></div>
-    </h1>
-  </header>
-</main>
+          <header>
+            <h1>
+              WeatherWiz
+              <div class="bg-gradient"></div>
+              <div class="bg-gradient two"></div>
+            </h1>
+          </header>
+        </main>
       )}
     </>
   );

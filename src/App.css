@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
+
 .container {
   width: fit-content;
   max-width: 1080px;
@@ -14,36 +16,63 @@
   right: 29%;
 }
 
-.logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 5rem;
-  color: #d5d4d4; /* Choose your desired color */
-  text-align: center;
-  width: 100%;
-  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); */
+.content-visible .container {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.content-hidden .container {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.main-content {
+  position: relative;
+  overflow: hidden;
 }
 
 main {
-  height: 100dvh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #000;
+  transition: transform 0.5s ease-in-out;
 }
 
 header {
   color: #fff;
-  font-size: clamp(5rem, 5vw, 2rem);
+  font-size: clamp(7rem, 5vw, 2rem);
 }
 
 h1 {
   padding-inline: 1rem;
   position: relative;
   overflow: hidden;
+  font-family: "Cookie", cursive;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search {
+  width: 58.7%;
+  min-width: 633px;
+}
+
+.content-visible {
+  transform: translateX(0%);
+}
+
+.content-hidden {
+  transform: translateX(100%);
 }
 
 .bg-gradient {
@@ -86,15 +115,4 @@ h1 {
     right: 60%;
     top: 30%;
   }
-}
-
-.display {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.search {
-  width: 58.7%;
-  min-width: 633px;
 }
