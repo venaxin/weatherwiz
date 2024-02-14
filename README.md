@@ -1,5 +1,6 @@
 <img src="./public/icons/WeatherWiz.gif" alt="project demo">
-# Weather Forecast Project
+
+### WeatherWiz
 
 ## Overview
 
@@ -14,15 +15,20 @@ This project is a simple weather forecast application built with React. It allow
 
 ## Installation
 
-````bash
 # Clone the repository
-git clone <repository_url>
+```bash
+   git clone <repository_url>
+```
 
 # Navigate to the project directory
-cd weather-forecast-project
+```bash
+   cd weather-forecast-project
+```
 
 # Install dependencies
-npm install
+```bash
+   npm install
+```
 
 # Usage
 1. Obtain an API key from OpenWeatherMap API.
@@ -30,11 +36,12 @@ npm install
 
 ```makefile:
     REACT_APP_WEATHER_API_KEY=<your_api_key>
+```
 
 3. Start the application:
 
 ```bash
     npm start
-
+```
 4. Open your browser and navigate to http://localhost:3000 to view the application.
-````
+
